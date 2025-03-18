@@ -1,4 +1,10 @@
 module.exports = (err, req, res, next) => {
+  if (err.name === 'JsonWebTokenError') {
+    err.statusCode = 400;
+    err.status = 'fail';
+    err.message = 'Invalid token. Please log in again!';
+  } // handle invalid token error
+
   if (err.code === 11000) {
     err.statusCode = 400;
     err.status = 'fail';
