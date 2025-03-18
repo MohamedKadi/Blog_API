@@ -1,5 +1,6 @@
 const errorController = require('./Controllers/errorController');
 const authRouter = require('./Routes/authRoutes');
+const userRoutes = require('./Routes/userRoutes');
 const mongoose = require('mongoose');
 
 const express = require('express');
@@ -20,6 +21,7 @@ mongoose
   .catch((error) => handleError(error));
 
 app.use('/api/auth', authRouter);
+app.use('/api/users', userRoutes);
 
 app.use('*', (req, res, next) => {
   const err = new Error('Not Found');
