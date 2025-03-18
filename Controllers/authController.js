@@ -20,9 +20,13 @@ exports.register = async (req, res, next) => {
       email,
       password: hashedPassword,
     });
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      }
+    );
     res.status(200).json({
       status: 'success',
       message: 'User registered successfully',
@@ -56,9 +60,13 @@ exports.login = async (req, res, next) => {
         message: 'Invalid credentials',
       });
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      }
+    );
     res.status(200).json({
       status: 'success',
       message: 'User logged in successfully',
@@ -97,4 +105,16 @@ exports.protect = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        status: 'fail',
+        message: 'You do not have permission to perform this action',
+      });
+    }
+    next();
+  };
 };
