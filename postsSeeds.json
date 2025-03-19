@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Getting Started with Node.js",
+    "content": "Node.js is a powerful runtime environment that allows you to build scalable network applications...",
+    "author": "67dabf60893b6ce4a9a80c1f",
+    "categories": ["Tech", "Programming", "Web Development"],
+    "likes": ["67dac260893b6ce4a9a80c22", "67dabf60893b6ce4a9a80c20"]
+  },
+  {
+    "title": "The Art of Minimalism",
+    "content": "Minimalism isn't just about decluttering your space, it's about intentional living...",
+    "author": "67dabf60893b6ce4a9a80c1f",
+    "categories": ["Lifestyle", "Personal Development"],
+    "likes": ["67d9a977946edf51e98c11ee"]
+  },
+  {
+    "title": "Modern JavaScript Features",
+    "content": "ES6+ has introduced many powerful features that have transformed how we write JavaScript...",
+    "author": "67dabf60893b6ce4a9a80c1e",
+    "categories": ["Tech", "Programming"],
+    "likes": []
+  },
+  {
+    "title": "Sustainable Living Tips",
+    "content": "Small changes in our daily habits can lead to a more sustainable lifestyle...",
+    "author": "67dabf60893b6ce4a9a80c20",
+    "categories": ["Lifestyle", "Environment"],
+    "likes": []
+  },
+  {
+    "title": "Introduction to MongoDB",
+    "content": "MongoDB is a popular NoSQL database that offers flexibility and scalability...",
+    "author": "67dabf60893b6ce4a9a80c1e",
+    "categories": ["Tech", "Database", "Programming"],
+    "likes": []
+  }
+]

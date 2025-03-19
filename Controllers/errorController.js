@@ -1,4 +1,9 @@
 module.exports = (err, req, res, next) => {
+  if (err.name === 'ValidationError') {
+    err.statusCode = 400;
+    err.status = 'fail';
+    err.message = err.message;
+  } // handle validation error
   if (err.name === 'JsonWebTokenError') {
     err.statusCode = 400;
     err.status = 'fail';

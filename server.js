@@ -1,6 +1,8 @@
 const errorController = require('./Controllers/errorController');
 const authRouter = require('./Routes/authRoutes');
 const userRoutes = require('./Routes/userRoutes');
+const postRoutes = require('./Routes/postRoutes');
+
 const mongoose = require('mongoose');
 const seedsRoutes = require('./Routes/seedsRoutes');
 
@@ -23,6 +25,7 @@ mongoose
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 //for seeds
 app.use('/api/seeds', seedsRoutes);
 
