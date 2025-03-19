@@ -2,6 +2,7 @@ const errorController = require('./Controllers/errorController');
 const authRouter = require('./Routes/authRoutes');
 const userRoutes = require('./Routes/userRoutes');
 const mongoose = require('mongoose');
+const seedsRoutes = require('./Routes/seedsRoutes');
 
 const express = require('express');
 const app = express();
@@ -22,6 +23,8 @@ mongoose
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRoutes);
+//for seeds
+app.use('/api/seeds', seedsRoutes);
 
 app.use('*', (req, res, next) => {
   const err = new Error('Not Found');
