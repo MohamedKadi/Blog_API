@@ -27,7 +27,18 @@ exports.createPost = async (req, res, next) => {
   }
 };
 
-exports.getAllPosts = async (req, res, next) => {};
+exports.getAllPosts = async (req, res, next) => {
+  try {
+    const posts = await Post.find();
+    res.status(200).json({
+      status: 'success',
+      length: posts.length,
+      data: posts,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.getPost = async (req, res, next) => {};
 
