@@ -1,5 +1,5 @@
-const usersSeeds = require('../usersSeeds.json');
-const postsSeeds = require('../postsSeeds.json');
+const usersSeeds = require('../seeds/usersSeeds.json');
+const postsSeeds = require('../seeds/postsSeeds.json');
 const User = require('../Models/User');
 const Post = require('../Models/Post');
 
