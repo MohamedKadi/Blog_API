@@ -13,7 +13,7 @@ router
 router
   .route('/:id')
   .get(postController.getPost)
-  .put(postController.updatePost) //author only
-  .delete(postController.deletePost); //author & admin only
+  .put(authController.protect, postValidation, postController.updatePost) //author only
+  .delete(authController.protect, postController.deletePost); //author & admin only
 
 module.exports = router;
