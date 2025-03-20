@@ -18,6 +18,11 @@ const postValidationSchema = checkSchema({
     isArray: true,
     errorMessage: 'Categories must be an array',
   },
+  comments: {
+    optional: true,
+    isString: true,
+    errorMessage: 'Comments must be a non-empty string',
+  },
 });
 
 module.exports = postValidationSchema;

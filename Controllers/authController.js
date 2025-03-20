@@ -93,6 +93,12 @@ exports.protect = async (req, res, next) => {
       });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (!decoded || !isValidObjectId(decoded.id)) {
+      return res.status(401).json({
+        status: 'fail',
+        message: 'Invalid token',
+      });
+    }
     const user = await User.findById(decoded.id);
     if (!user) {
       return res.status(401).json({
