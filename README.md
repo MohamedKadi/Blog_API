@@ -40,6 +40,7 @@ A RESTful API for a blog platform built with Node.js, Express, and MongoDB. The 
 ```http
 POST /api/auth/register  # Register new user
 POST /api/auth/login     # Login user
+POST /api/users/:id   # Upload user profile image
 ```
 
 ### 📝 Posts
