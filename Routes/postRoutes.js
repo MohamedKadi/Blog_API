@@ -20,6 +20,7 @@ router
 
 router
   .route('/:postId/comments')
+  .get(commentController.getComments)
   .post(
     authController.protect,
     commentValidator,

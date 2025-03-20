@@ -39,3 +39,25 @@ exports.createComment = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getComments = async (req, res, next) => {
+  try {
+    const { postId } = req.params;
+    if (!postId || !isValidObjectId(postId)) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Post not found',
+      });
+    }
+    const posts = await Post.findById(postId).populate('comments');
+    res.status(200).json({
+      status: 'success',
+      data: {
+        length: posts.comments.length,
+        comments: posts.comments,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
