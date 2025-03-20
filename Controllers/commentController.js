@@ -61,3 +61,32 @@ exports.getComments = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.DeleteComment = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    if (!id || !isValidObjectId(id)) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Comment not found',
+      });
+    }
+    const comment = await Comment.findByIdAndDelete(id);
+    if (!comment) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Comment not found',
+      });
+    }
+    //remove comment from post
+    await Post.updateOne({ comments: id }, { $pull: { comments: id } });
+    //remove comment from user
+    await User.updateOne({ comments: id }, { $pull: { comments: id } });
+    res.status(200).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (err) {
+    next(err);
+  }
+};

@@ -27,7 +27,7 @@ mongoose
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
-//app.use('/api/comments', commentRoutes);
+app.use('/api/comments', commentRoutes);
 //for seeds
 app.use('/api/seeds', seedsRoutes);
 

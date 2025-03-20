@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const User = require('../Models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { isValidObjectId } = require('mongoose');
 
 exports.register = async (req, res, next) => {
   try {
