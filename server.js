@@ -12,6 +12,9 @@ const app = express();
 const morgan = require('morgan');
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+const cors = require('cors');
+app.use(cors());
+
 require('dotenv').config();
 
 app.use(morgan('dev'));

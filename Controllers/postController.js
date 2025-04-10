@@ -30,7 +30,22 @@ exports.createPost = async (req, res, next) => {
 
 exports.getAllPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find()
+      .sort({ createdAt: -1 })
+      .populate([
+        {
+          path: 'author',
+          select: 'username',
+        },
+        {
+          path: 'likes',
+          select: 'username', // Only include the fields you need
+        },
+        {
+          path: 'comments',
+          select: 'text', // Only include the fields you need
+        },
+      ]);
     res.status(200).json({
       status: 'success',
       length: posts.length,
