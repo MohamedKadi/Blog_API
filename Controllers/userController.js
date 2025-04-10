@@ -82,3 +82,26 @@ exports.uploadProfilePicture = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getProfilePicture = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user || !user.profilePic) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Profile picture not found',
+      });
+    }
+
+    const result = await cloudinary.api.resource(user.profilePic);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        profilePic: result.secure_url,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};

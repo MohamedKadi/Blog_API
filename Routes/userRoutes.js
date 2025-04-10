@@ -18,5 +18,7 @@ router
     authController.restrictTo('admin'),
     userController.deleteUser
   );
-
+router
+  .route('/:id/profile-picture')
+  .get(authController.protect, userController.getProfilePicture);
 module.exports = router;
